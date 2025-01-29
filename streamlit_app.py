@@ -77,7 +77,7 @@ def list_files(service, folder_id=None):
     return items
 
 def main():
-    st.title("Editor de Arquivos Excel - Google Drive")
+    st.title("Gestor financeiro")
 
     # Adicionando a barra lateral
     with st.sidebar:
