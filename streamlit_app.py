@@ -58,7 +58,7 @@ def authenticate():
     test_authentication(service)
     return service
 
-# def test_authentication(service):
+def test_authentication(service):
     """Teste simples para verificar se a autenticação foi bem-sucedida"""
     try:
         results = service.files().list(pageSize=1).execute()
@@ -93,7 +93,7 @@ def main():
         #st.text("Autenticação: Bem-sucedida")
 
     # Autenticação no Google Drive
-    #service = authenticate()
+    service = authenticate()
 
     # Listar arquivos e pastas na raiz
     items = list_files(service)
