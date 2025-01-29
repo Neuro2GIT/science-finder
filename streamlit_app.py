@@ -86,7 +86,7 @@ def main():
     
         # Botão de autenticação
         #if st.button("Reautenticar"):
-            service = authenticate()
+            #service = authenticate()
         
         # Exibir mensagem de status
         #st.text("Status da autenticação:")
