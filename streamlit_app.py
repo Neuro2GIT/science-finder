@@ -16,6 +16,7 @@ st.set_page_config(
     }
 )
 
+st.set_option('client.showErrorDetails', True)
 
 def check_password():
     """Returns `True` if the user had the correct password."""
