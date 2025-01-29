@@ -154,5 +154,7 @@ def main():
             service.files().update(fileId=file_id, media_body=media).execute()
             st.success("Alterações salvas no Google Drive!")
 
+st.set_option('client.showErrorDetails', True)
+
 if __name__ == "__main__":
     main()
