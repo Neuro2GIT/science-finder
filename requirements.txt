@@ -4,3 +4,4 @@ google-auth-oauthlib
 pandas
 streamlit
 openpyxl
+st_aggrid
