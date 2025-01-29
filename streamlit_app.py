@@ -144,12 +144,18 @@ def main():
         df = pd.read_excel(file_path)
         st.write("Conteúdo do arquivo Excel:", df)
 
-        # Permitir edição da tabela
-        edited_df = st.experimental_data_editor(df)
+        # Permitir edição da tabela usando st-aggrid
+        gb = GridOptionsBuilder.from_dataframe(df)
+        gb.configure_pagination()  # Ativa paginação
+        gb.configure_default_column(editable=True)  # Permite edição
+        grid_options = gb.build()
+
+        # Exibir a tabela editável com AgGrid
+        edited_df = AgGrid(df, gridOptions=grid_options, editable=True, fit_columns_on_grid_load=True)
 
         # Permitir o envio do arquivo editado para o Google Drive
         if st.button("Salvar alterações"):
-            edited_df.to_excel(file_path, index=False)
+            edited_df['data'].to_excel(file_path, index=False)  # Salva as alterações no Excel
             # Fazer upload do arquivo editado para o Google Drive
             media = MediaIoBaseDownload(io.open(file_path, 'rb'), mimetype="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
             service.files().update(fileId=file_id, media_body=media).execute()
